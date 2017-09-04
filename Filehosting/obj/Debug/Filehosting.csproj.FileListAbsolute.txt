@@ -1,0 +1,9 @@
+c:\users\дом\documents\visual studio 2015\Projects\WcfFilehosting\Filehosting\bin\Debug\Filehosting.exe.config
+c:\users\дом\documents\visual studio 2015\Projects\WcfFilehosting\Filehosting\bin\Debug\Filehosting.exe
+c:\users\дом\documents\visual studio 2015\Projects\WcfFilehosting\Filehosting\bin\Debug\Filehosting.pdb
+c:\users\дом\documents\visual studio 2015\Projects\WcfFilehosting\Filehosting\obj\Debug\Filehosting.Form1.resources
+c:\users\дом\documents\visual studio 2015\Projects\WcfFilehosting\Filehosting\obj\Debug\Filehosting.Properties.Resources.resources
+c:\users\дом\documents\visual studio 2015\Projects\WcfFilehosting\Filehosting\obj\Debug\Filehosting.csproj.GenerateResource.Cache
+c:\users\дом\documents\visual studio 2015\Projects\WcfFilehosting\Filehosting\obj\Debug\Filehosting.exe
+c:\users\дом\documents\visual studio 2015\Projects\WcfFilehosting\Filehosting\obj\Debug\Filehosting.pdb
+c:\users\дом\documents\visual studio 2015\Projects\WcfFilehosting\Filehosting\obj\Debug\Filehosting.csprojResolveAssemblyReference.cache

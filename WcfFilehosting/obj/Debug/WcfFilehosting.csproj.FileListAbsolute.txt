@@ -16,4 +16,3 @@ c:\users\дом\documents\visual studio 2015\Projects\WcfFilehosting\WcfFilehost
 c:\users\дом\documents\visual studio 2015\Projects\WcfFilehosting\WcfFilehosting\bin\Microsoft.ApplicationInsights.xml
 c:\users\дом\documents\visual studio 2015\Projects\WcfFilehosting\WcfFilehosting\obj\Debug\WcfFilehosting.dll
 c:\users\дом\documents\visual studio 2015\Projects\WcfFilehosting\WcfFilehosting\obj\Debug\WcfFilehosting.pdb
-c:\users\дом\documents\visual studio 2015\Projects\WcfFilehosting\WcfFilehosting\obj\Debug\WcfFilehosting.csprojResolveAssemblyReference.cache

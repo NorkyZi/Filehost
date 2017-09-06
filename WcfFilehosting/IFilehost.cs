@@ -20,6 +20,9 @@ namespace WcfFilehosting
 
         [OperationContract]
         string getFileInd(string fileName);
+
+        [OperationContract]
+        long getFileInfo(string fileName);
     }
 
     [DataContract]
@@ -28,7 +31,7 @@ namespace WcfFilehosting
         private string _name;
         private byte[] _data;
         private long _size;
-
+        
         [DataMember]
         public string Name
         {

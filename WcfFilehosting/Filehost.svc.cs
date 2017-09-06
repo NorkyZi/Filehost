@@ -71,10 +71,16 @@ namespace WcfFilehosting
         {
             string path = "D:\\server\\" + file.Name;
             DirectoryInfo di = Directory.CreateDirectory("D:\\server\\");
-            var stream = new FileStream(path, FileMode.Append, FileAccess.Write);
-            stream.Write(file.Data, 0, file.Data.Length);
-            if (stream != null)
-                stream.Close();
+            Stream stream = null;
+            try
+            {
+                stream = new FileStream(path, FileMode.Append, FileAccess.Write);
+                stream.Write(file.Data, 0, file.Data.Length);
+            }
+            finally {
+                if (stream != null)
+                    stream.Close();
+            }
         }
 
         public string getFileInd(string fileName)
@@ -92,5 +98,14 @@ namespace WcfFilehosting
             return "";
         }
 
-   }
+        public long getFileInfo(string fileName)
+        {
+            string path = "D:\\server\\" + fileName;
+            if (File.Exists(path)) {
+                FileInfo info = new FileInfo(path);
+                return info.Length; 
+            }
+            return 0;
+        }
+    }
 }

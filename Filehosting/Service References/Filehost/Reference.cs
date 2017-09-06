@@ -111,6 +111,12 @@ namespace Filehosting.Filehost {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFilehost/getFileInd", ReplyAction="http://tempuri.org/IFilehost/getFileIndResponse")]
         System.Threading.Tasks.Task<string> getFileIndAsync(string fileName);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFilehost/getFileInfo", ReplyAction="http://tempuri.org/IFilehost/getFileInfoResponse")]
+        long getFileInfo(string fileName);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFilehost/getFileInfo", ReplyAction="http://tempuri.org/IFilehost/getFileInfoResponse")]
+        System.Threading.Tasks.Task<long> getFileInfoAsync(string fileName);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -162,6 +168,14 @@ namespace Filehosting.Filehost {
         
         public System.Threading.Tasks.Task<string> getFileIndAsync(string fileName) {
             return base.Channel.getFileIndAsync(fileName);
+        }
+        
+        public long getFileInfo(string fileName) {
+            return base.Channel.getFileInfo(fileName);
+        }
+        
+        public System.Threading.Tasks.Task<long> getFileInfoAsync(string fileName) {
+            return base.Channel.getFileInfoAsync(fileName);
         }
     }
 }

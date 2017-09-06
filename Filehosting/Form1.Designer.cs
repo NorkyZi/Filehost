@@ -50,6 +50,7 @@
             this.tbFileNameD = new System.Windows.Forms.TextBox();
             this.ofd1 = new System.Windows.Forms.OpenFileDialog();
             this.fbd1 = new System.Windows.Forms.FolderBrowserDialog();
+            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.tabControl1.SuspendLayout();
             this.tpSend.SuspendLayout();
             this.tpDownload.SuspendLayout();
@@ -68,7 +69,7 @@
             // btnSendFile
             // 
             this.btnSendFile.Enabled = false;
-            this.btnSendFile.Location = new System.Drawing.Point(8, 123);
+            this.btnSendFile.Location = new System.Drawing.Point(8, 125);
             this.btnSendFile.Name = "btnSendFile";
             this.btnSendFile.Size = new System.Drawing.Size(321, 44);
             this.btnSendFile.TabIndex = 1;
@@ -307,6 +308,7 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label lProcess;
         private System.Windows.Forms.Label label4;
+        private System.ComponentModel.BackgroundWorker backgroundWorker1;
     }
 }
 

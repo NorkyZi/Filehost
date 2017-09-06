@@ -26,6 +26,7 @@ namespace Filehosting
         private DialogResult result = 0;
         private string fileNameS;
         private int wl;
+        private Thread threadSend, threadDown;
 
         void setPos(int value, ProgressBar pb)
         {
@@ -143,8 +144,9 @@ namespace Filehosting
 
             if (result == System.Windows.Forms.DialogResult.OK)
             {
-                fileNameS = ofd1.FileName;
-                tbFileName.Text = fileNameS;
+                
+                tbFileName.Text = ofd1.FileName;
+                fileNameS = tbFileName.Text;
                 Stream stream = null;
                 try
                 {
@@ -178,17 +180,17 @@ namespace Filehosting
             btnSendFile.Enabled = false;
             btnSelect.Enabled = false;
             progressBar.Style = ProgressBarStyle.Blocks;
-            Thread thread = new Thread(new ThreadStart(send));
-            thread.Start();
+            threadSend = new Thread(new ThreadStart(send));
+            threadSend.Start();
         }
 
         private void send()
         {
             Stream stream = null;
-            Int32 curByte = 0;
-            Int32 lenght = -1;
+            long lenght = -1;
             string fileName = Path.GetFileName(fileNameS);
-
+            long curByte = 0;
+            
             try
             {
                 stream = ofd1.OpenFile();
@@ -197,20 +199,26 @@ namespace Filehosting
                 if (stream != null)
                 {
                     const int bufferSize = 32768;
-
                     Filehost.FilehostClient client = new FilehostClient();
                     Filehost.DTO dto = new DTO();
+                    curByte = client.getFileInfo(fileName);
+
+                    if (curByte != 0)
+                    {
+                        MessageBox.Show("Файл " + fileName + " уже есть на сервере, но не закачан полностью. Он будет докачан!");
+                    } 
                     dto.Name = fileName;
                     dto.Data = new byte[bufferSize];
 
-                    do
+                    while (true)
                     {
-                        int size;
+                        long size;
                         if ((lenght - curByte) < bufferSize)
                             size = lenght - curByte;
                         else size = bufferSize;
                         byte[] buffer = new byte[size];
-                        int bytesRead = stream.Read(buffer, 0, size);
+                        stream.Position = curByte;
+                        int bytesRead = stream.Read(buffer, 0, (int)size);
                         dto.Data = buffer;
                         if (bytesRead == 0)
                             break;
@@ -219,12 +227,12 @@ namespace Filehosting
                         curByte += size;
 
                         setPos(((int)(stream.Position * 100 / stream.Length)), progressBar);
-                    } while (true);
+                    } 
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show("Процесс передачи файла остановен!\nПри повторной попытке передачи фала вы продолжите с момента остановки!");
             }
             finally
             {
@@ -252,8 +260,8 @@ namespace Filehosting
             lProcess.Enabled = true;
             btnDownload.Enabled = false;
             progressBarDownload.Style = ProgressBarStyle.Blocks;
-            Thread thread = new Thread(new ThreadStart(download));
-            thread.Start();
+            threadDown = new Thread(new ThreadStart(download));
+            threadDown.Start();
         }
 
         private void download()
@@ -315,6 +323,7 @@ namespace Filehosting
             double num = Math.Round(bytes / Math.Pow(1024, place), 1);
             return (Math.Sign(byteCount) * num).ToString() + " " + suf[place];
         }
+
     }
 
 }

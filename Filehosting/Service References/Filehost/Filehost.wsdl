@@ -25,6 +25,12 @@
   <wsdl:message name="IFilehost_getFileInd_OutputMessage">
     <wsdl:part name="parameters" element="tns:getFileIndResponse" />
   </wsdl:message>
+  <wsdl:message name="IFilehost_getFileInfo_InputMessage">
+    <wsdl:part name="parameters" element="tns:getFileInfo" />
+  </wsdl:message>
+  <wsdl:message name="IFilehost_getFileInfo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getFileInfoResponse" />
+  </wsdl:message>
   <wsdl:portType name="IFilehost">
     <wsdl:operation name="sendFile">
       <wsdl:input wsaw:Action="http://tempuri.org/IFilehost/sendFile" message="tns:IFilehost_sendFile_InputMessage" />
@@ -37,6 +43,10 @@
     <wsdl:operation name="getFileInd">
       <wsdl:input wsaw:Action="http://tempuri.org/IFilehost/getFileInd" message="tns:IFilehost_getFileInd_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IFilehost/getFileIndResponse" message="tns:IFilehost_getFileInd_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="getFileInfo">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFilehost/getFileInfo" message="tns:IFilehost_getFileInfo_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFilehost/getFileInfoResponse" message="tns:IFilehost_getFileInfo_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IFilehost" type="tns:IFilehost">
@@ -61,6 +71,15 @@
     </wsdl:operation>
     <wsdl:operation name="getFileInd">
       <soap:operation soapAction="http://tempuri.org/IFilehost/getFileInd" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getFileInfo">
+      <soap:operation soapAction="http://tempuri.org/IFilehost/getFileInfo" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
